@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../dist/todo.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/todo.css" />
     <title>Todo</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
       <div class="create__button">
         <button class="btn__create">
-            Create Todo
+          <div class="right__stick"></div>
+          <div class="left__stick"></div>
         </button>
       </div>
+      <div class="create__form">
+        <form action="">
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Todo..."
+          ></textarea>
+          <div class="save__button__container">
+            <button class="btn__save">Save</button>
+          </div>
+          
+        </form>
+      </div>
+
       <div class="todo__list__container">
-       <ul class="todo__list"></ul>
+        <ul class="todo__list"></ul>
       </div>
     </div>
-</body>
+  </body>
+  <script src="../../app/Todo.js"></script>
 </html>
