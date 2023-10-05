@@ -54,10 +54,13 @@
     }
   }
   .create__form {
+    position: absolute;
+    background-color: #fff;
     display: none;
     width: 50%;
     height: 50vh;
     margin: auto;
+    left: 25%;
     border: 1px solid #aaa;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -93,6 +96,43 @@
           -moz-border-radius: 5px;
           -ms-border-radius: 5px;
           -o-border-radius: 5px;
+        }
+      }
+    }
+  }
+  .todo__list__container {
+    padding: 20px;
+    .todo__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      list-style: none;
+      .list__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        border: 1px solid rgb(63, 123, 183);
+
+        .list__item__bottom {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            input[type="checkbox"] {
+              height: 25px;
+              width: 25px;
+            }
+            .btn__delete {
+              padding: 8px;
+              border: none;
+              margin: 0 5px;
+            }
+          }
         }
       }
     }
