@@ -61,6 +61,7 @@
     height: 50vh;
     margin: auto;
     left: 25%;
+    overflow: hidden;
     border: 1px solid #aaa;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -68,6 +69,13 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     form {
+      .title__input {
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #aaa;
+       outline: none;
+      }
       textarea {
         width: 100%;
         resize: none;

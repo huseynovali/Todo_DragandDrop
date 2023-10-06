@@ -3,6 +3,10 @@ let create__btn = document.querySelector(".btn__create");
 let todo__form__container = document.querySelector(".create__form");
 let todo__list = document.querySelector(".todo__list");
 let checked__btn = document.querySelector(".checkbox__input");
+let formin = document.querySelector(".form");
+let titleInput = document.querySelector(".title__input");
+let textareaInput = document.querySelector(".textarea__input");
+
 let arr = [
   {
     title: "ALI",
@@ -50,21 +54,10 @@ let arr = [
 
 function eventListener() {
   button.addEventListener("click", addToogle);
-  //checked__btn.addEventListener("click",  () => console.log("salam"));
   document.addEventListener("DOMContentLoaded", dataList);
+  formin.addEventListener("submit", formValidationController);
 }
 eventListener();
-
-function addToogle() {
-  console.log(create__btn.classList.value);
-  if (create__btn.classList.value.includes("rotate-45")) {
-    create__btn.classList.remove("rotate-45");
-    todo__form__container.classList.remove("d-block");
-  } else {
-    create__btn.classList.add("rotate-45");
-    todo__form__container.classList.add("d-block");
-  }
-}
 
 function dataList() {
   fetch("http://localhost:5000/todo/get/651f2f34f429d438f0e5007c")
@@ -75,8 +68,8 @@ function dataList() {
     });
 }
 
-const listItem = () => {
-  todo__list.innerHTML = ""; // Liste öğesini temizle
+function listItem() {
+  todo__list.innerHTML = "";
   arr.forEach((item, index) => {
     const listItemElement = document.createElement("li");
     listItemElement.classList.add("list__item");
@@ -115,9 +108,47 @@ const listItem = () => {
     listItemElement.appendChild(listBottomElement);
     todo__list.appendChild(listItemElement);
   });
-};
+}
 
-const clickCheckbox = (index, itemId) => {
+function addToogle() {
+  if (create__btn.classList.value.includes("rotate-45")) {
+    create__btn.classList.remove("rotate-45");
+    todo__form__container.classList.remove("d-block");
+  } else {
+    create__btn.classList.add("rotate-45");
+    todo__form__container.classList.add("d-block");
+  }
+}
+
+function formValidationController(e) {
+  let TaskInput = titleInput.value.trim();
+  let Category = textareaInput.value;
+
+  if (TaskInput == "") {
+    alert("Pls Insert Input !");
+  } else {
+    fetch("http://localhost:5000/todo/create/651f2f34f429d438f0e5007c", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: TaskInput,
+        description: Category,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        todo__form__container.classList.remove("d-block");
+        window.location.reload()
+      })
+      .catch((error) => console.error(error));
+  }
+
+  e.preventDefault();
+}
+
+function clickCheckbox(index, itemId) {
   arr[index].complated = !arr[index].complated;
   listItem();
   fetch("http://localhost:5000/todo/update/" + itemId, {
@@ -130,4 +161,4 @@ const clickCheckbox = (index, itemId) => {
     .then((res) => res.json())
     .then((res) => console.log(res))
     .catch((error) => console.error(error));
-};
+}

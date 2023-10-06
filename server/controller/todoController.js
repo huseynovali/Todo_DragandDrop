@@ -40,7 +40,7 @@ const TodoController = {
       if (!updatedTodo) {
         return res.status(404).json({ message: "Todo not found" });
       }
-      updatedTodo.complated = newCompletedValue;
+      updatedTodo.complated = newCompletedValue; 
       await updatedTodo.save();
       res.status(200).json(updatedTodo);
     } catch (error) {
