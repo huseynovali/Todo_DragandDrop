@@ -6,7 +6,7 @@ let checked__btn = document.querySelector(".checkbox__input");
 let formin = document.querySelector(".form");
 let titleInput = document.querySelector(".title__input");
 let textareaInput = document.querySelector(".textarea__input");
-
+const userId = JSON.parse(localStorage.getItem("userId"));
 let arr = [
   {
     title: "ALI",
@@ -60,7 +60,7 @@ function eventListener() {
 eventListener();
 
 function dataList() {
-  fetch("http://localhost:5000/todo/get/651f2f34f429d438f0e5007c")
+  fetch("http://localhost:5000/todo/get/" + userId)
     .then((res) => res.json())
     .then((res) => {
       arr = [...res];
@@ -74,7 +74,7 @@ function listItem() {
     const listItemElement = document.createElement("li");
     listItemElement.classList.add("list__item");
 
-    const titleElement = document.createElement("p");
+    const titleElement = document.createElement("h1");
     titleElement.textContent = item.title;
     listItemElement.appendChild(titleElement);
 
@@ -87,24 +87,31 @@ function listItem() {
 
     const listBottomElement = document.createElement("div");
     listBottomElement.classList.add("list__item__bottom");
-
     const dateElement = document.createElement("span");
     dateElement.textContent = new Date(item.uploadDate).toLocaleDateString();
     listBottomElement.appendChild(dateElement);
 
+    const listBottomInputGroup = document.createElement("div");
+
     const buttonElement = document.createElement("button");
     buttonElement.textContent = "Delete";
     buttonElement.classList.add("btn__delete");
-    listBottomElement.appendChild(buttonElement);
+
+    buttonElement.addEventListener("click", () => {
+      deleteTodo(item._id);
+    });
+    listBottomInputGroup.appendChild(buttonElement);
 
     const checkboxElement = document.createElement("input");
     checkboxElement.type = "checkbox";
     checkboxElement.checked = item.complated;
+    checkboxElement.className = "";
     checkboxElement.addEventListener("change", () => {
       clickCheckbox(index, item._id);
     });
-    listBottomElement.appendChild(checkboxElement);
-
+    listBottomInputGroup.appendChild(checkboxElement);
+    listBottomInputGroup.classList.add("bottom__inputGroup");
+    listBottomElement.appendChild(listBottomInputGroup);
     listItemElement.appendChild(listBottomElement);
     todo__list.appendChild(listItemElement);
   });
@@ -127,7 +134,7 @@ function formValidationController(e) {
   if (TaskInput == "") {
     alert("Pls Insert Input !");
   } else {
-    fetch("http://localhost:5000/todo/create/651f2f34f429d438f0e5007c", {
+    fetch("http://localhost:5000/todo/create/" + userId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,7 +147,7 @@ function formValidationController(e) {
       .then((res) => res.json())
       .then((res) => {
         todo__form__container.classList.remove("d-block");
-        window.location.reload()
+        window.location.reload();
       })
       .catch((error) => console.error(error));
   }
@@ -157,6 +164,20 @@ function clickCheckbox(index, itemId) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ newCompletedValue: arr[index].complated }),
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((error) => console.error(error));
+}
+function deleteTodo(paramsId) {
+  arr = arr.filter((item) => item._id !== paramsId);
+  listItem();
+
+  fetch("http://localhost:5000/todo/delete/" + paramsId, {
+    method: "Delete",
+    headers: {
+      "Content-Type": "application/json",
+    },
   })
     .then((res) => res.json())
     .then((res) => console.log(res))

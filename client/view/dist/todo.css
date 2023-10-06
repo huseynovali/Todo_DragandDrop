@@ -123,22 +123,26 @@
   padding: 10px;
   border: 1px solid rgb(63, 123, 183);
 }
+.container .todo__list__container .todo__list .list__item p {
+  font-size: 25px;
+  padding: 10px 0;
+}
 .container .todo__list__container .todo__list .list__item .list__item__bottom {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.container .todo__list__container .todo__list .list__item .list__item__bottom div {
+.container .todo__list__container .todo__list .list__item .list__item__bottom .bottom__inputGroup {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container .todo__list__container .todo__list .list__item .list__item__bottom div input[type=checkbox] {
+.container .todo__list__container .todo__list .list__item .list__item__bottom .bottom__inputGroup input[type=checkbox] {
   height: 25px;
   width: 25px;
 }
-.container .todo__list__container .todo__list .list__item .list__item__bottom div .btn__delete {
+.container .todo__list__container .todo__list .list__item .list__item__bottom .bottom__inputGroup .btn__delete {
   padding: 8px;
   border: none;
   margin: 0 5px;

@@ -30,6 +30,21 @@ const TodoController = {
       res.status(500).json(error);
     }
   },
+  
+  deleteTodo:async(req,res)=>{
+  try {
+    const todoId = req.params.todoId;
+    await Todo.findByIdAndDelete(todoId)
+    res.status(200).json({message:'Todo Delete !'});
+  } catch (error) {
+    res.status(500).json(error);
+  }
+    
+  },
+
+
+
+
   complatedAndUnComplated: async (req, res) => {
     try {
       const todoId = req.params.todoId;

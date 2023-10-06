@@ -74,7 +74,7 @@
         width: 100%;
         border: none;
         border-bottom: 1px solid #aaa;
-       outline: none;
+        outline: none;
       }
       textarea {
         width: 100%;
@@ -121,13 +121,16 @@
         justify-content: space-between;
         padding: 10px;
         border: 1px solid rgb(63, 123, 183);
-
+        p {
+          font-size: 25px;
+          padding: 10px 0;
+        }
         .list__item__bottom {
           width: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          div {
+          .bottom__inputGroup {
             display: flex;
             justify-content: center;
             align-items: center;
