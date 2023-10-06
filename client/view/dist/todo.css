@@ -25,6 +25,16 @@
   display: flex;
   justify-content: space-between;
 }
+.container .create__button .logout__btn {
+  padding: 8px 12px;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.container .create__button .logout__btn:hover {
+  background-color: #aaa;
+  color: #fff;
+}
 .container .create__button .btn__create {
   width: 45px;
   height: 45px;

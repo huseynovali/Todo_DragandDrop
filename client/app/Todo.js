@@ -8,6 +8,7 @@ let titleInput = document.querySelector(".title__input");
 let textareaInput = document.querySelector(".textarea__input");
 let userInfoText = document.querySelector(".user__info");
 let loadingContainer = document.querySelector(".loading__container");
+let logout__btn = document.querySelector(".logout__btn");
 
 const userId = JSON.parse(localStorage.getItem("userId"));
 const username = JSON.parse(localStorage.getItem("username"));
@@ -59,9 +60,10 @@ let arr = [
 ];
 
 function eventListener() {
-  button.addEventListener("click", addToogle);
+  create__btn.addEventListener("click", addToogle);
   document.addEventListener("DOMContentLoaded", checkLogin);
   formin.addEventListener("submit", formValidationController);
+  logout__btn.addEventListener("click", logoutFunc);
 }
 eventListener();
 
@@ -205,4 +207,9 @@ function deleteTodo(paramsId) {
     .then((res) => res.json())
     .then((res) => console.log(res))
     .catch((error) => console.error(error));
+}
+
+function logoutFunc() {
+  localStorage.clear();
+  window.location.href='http://127.0.0.1:5500/client/view/Auth/Login.html';
 }
