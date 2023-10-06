@@ -70,51 +70,57 @@ function dataList() {
 
 function listItem() {
   todo__list.innerHTML = "";
-  arr.forEach((item, index) => {
-    const listItemElement = document.createElement("li");
-    listItemElement.classList.add("list__item");
+  if (arr.length > 0) {
+    arr.forEach((item, index) => {
+      const listItemElement = document.createElement("li");
+      listItemElement.classList.add("list__item");
 
-    const titleElement = document.createElement("h1");
-    titleElement.textContent = item.title;
-    listItemElement.appendChild(titleElement);
+      const titleElement = document.createElement("h1");
+      titleElement.textContent = item.title;
+      listItemElement.appendChild(titleElement);
 
-    const descriptionElement = document.createElement("p");
-    descriptionElement.textContent = item.description;
-    if (item.complated) {
-      descriptionElement.style.textDecoration = "line-through";
-    }
-    listItemElement.appendChild(descriptionElement);
+      const descriptionElement = document.createElement("p");
+      descriptionElement.textContent = item.description;
+      if (item.complated) {
+        descriptionElement.style.textDecoration = "line-through";
+      }
+      listItemElement.appendChild(descriptionElement);
 
-    const listBottomElement = document.createElement("div");
-    listBottomElement.classList.add("list__item__bottom");
-    const dateElement = document.createElement("span");
-    dateElement.textContent = new Date(item.uploadDate).toLocaleDateString();
-    listBottomElement.appendChild(dateElement);
+      const listBottomElement = document.createElement("div");
+      listBottomElement.classList.add("list__item__bottom");
+      const dateElement = document.createElement("span");
+      dateElement.textContent = new Date(item.uploadDate).toLocaleDateString();
+      listBottomElement.appendChild(dateElement);
 
-    const listBottomInputGroup = document.createElement("div");
+      const listBottomInputGroup = document.createElement("div");
 
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = "Delete";
-    buttonElement.classList.add("btn__delete");
+      const buttonElement = document.createElement("button");
+      buttonElement.textContent = "Delete";
+      buttonElement.classList.add("btn__delete");
 
-    buttonElement.addEventListener("click", () => {
-      deleteTodo(item._id);
+      buttonElement.addEventListener("click", () => {
+        deleteTodo(item._id);
+      });
+      listBottomInputGroup.appendChild(buttonElement);
+
+      const checkboxElement = document.createElement("input");
+      checkboxElement.type = "checkbox";
+      checkboxElement.checked = item.complated;
+      checkboxElement.className = "";
+      checkboxElement.addEventListener("change", () => {
+        clickCheckbox(index, item._id);
+      });
+      listBottomInputGroup.appendChild(checkboxElement);
+      listBottomInputGroup.classList.add("bottom__inputGroup");
+      listBottomElement.appendChild(listBottomInputGroup);
+      listItemElement.appendChild(listBottomElement);
+      todo__list.appendChild(listItemElement);
     });
-    listBottomInputGroup.appendChild(buttonElement);
-
-    const checkboxElement = document.createElement("input");
-    checkboxElement.type = "checkbox";
-    checkboxElement.checked = item.complated;
-    checkboxElement.className = "";
-    checkboxElement.addEventListener("change", () => {
-      clickCheckbox(index, item._id);
-    });
-    listBottomInputGroup.appendChild(checkboxElement);
-    listBottomInputGroup.classList.add("bottom__inputGroup");
-    listBottomElement.appendChild(listBottomInputGroup);
-    listItemElement.appendChild(listBottomElement);
-    todo__list.appendChild(listItemElement);
-  });
+  } else {
+    const emptyText = document.createElement("h1");
+    emptyText.textContent = "Not Todo !";
+    todo__list.appendChild(emptyText);
+  }
 }
 
 function addToogle() {
