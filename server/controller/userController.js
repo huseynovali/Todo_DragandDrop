@@ -8,6 +8,7 @@ const userController = {
       const { email, password } = req.body;
 
       const user = await User.findOne({ email });
+
       if (!user) {
         return res.status(404).json("user not found !");
       }
@@ -17,13 +18,11 @@ const userController = {
       if (!isPasswordValid) {
         return res.status(400).json("password incorrect !");
       }
-
-      let token = jwt.sign(req.body.email, process.env.ACCESS_KEY);
+      const token = jwt.sign(email, "process.env.ACCESS_KEY");
       user.token = token;
       user.save();
 
-      res.json({ token: token, user: user });
-      res.status(200).json(user);
+      res.status(200).json({ user: user });
     } catch (error) {
       res.status(500).json(error);
     }

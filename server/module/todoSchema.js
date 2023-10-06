@@ -3,18 +3,22 @@ const mongoose = require("mongoose");
 const TodoSchema = mongoose.Schema({
   title: {
     type: String,
-    require
+    require,
   },
   description: {
     type: String,
     require,
   },
   complated: {
-    type: Boolean
+    type: Boolean,
+    default: false,
   },
+  uploadDate: {
+    type: String,
+  },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
+const Todo = mongoose.model("Todo", TodoSchema);
 
-const Todo = mongoose.Model("Todo",TodoSchema)
-
-module.exports = Todo
+module.exports = Todo;

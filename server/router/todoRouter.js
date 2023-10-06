@@ -1,12 +1,14 @@
 const { Router } = require("express");
+const TodoController = require("../controller/todoController");
 
-const userRouter = Router()
-
-
-
-userRouter.post('/login',userController.login)
-userRouter.post('/register',userController.register)
+const todoRouter = Router()
 
 
 
-module.exports =userRouter
+todoRouter.post('/create/:userid',TodoController.addTodo)
+ todoRouter.get('/get/:userid',TodoController.getTodos)
+ todoRouter.put('/update/:todoId',TodoController.complatedAndUnComplated)
+
+
+
+module.exports =todoRouter

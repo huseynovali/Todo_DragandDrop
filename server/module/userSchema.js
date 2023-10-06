@@ -12,11 +12,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true, 
   },
- 
-  userTodo: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Todo", 
-  },
+ token:{  
+    type: String,
+ },
+
 });
 
 const User = mongoose.model("User", UserSchema);
