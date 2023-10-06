@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../dist/auth.css" />
     <title>Document</title>
-</head>
-<body>
-    Register
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <form action="" id="form">
+        <h3>Register</h3>
+        <div class="input__group">
+          <label for="">Name</label>
+          <input type="text" class="name__input" />
+        </div>
+        <div class="input__group">
+          <label for="">Email</label>
+          <input type="text" class="email__input" />
+        </div>
+
+        <div class="input__group">
+          <label for="">Password</label>
+          <input type="password" class="password__input" />
+        </div>
+        <div class="login__btn__container">
+          <a href="http://127.0.0.1:5500/client/view/Auth/Login.html"
+            >Login</a
+          >
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../../app/Register.js"></script>
+  </body>
 </html>

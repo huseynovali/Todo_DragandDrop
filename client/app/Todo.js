@@ -211,5 +211,5 @@ function deleteTodo(paramsId) {
 
 function logoutFunc() {
   localStorage.clear();
-  window.location.href='http://127.0.0.1:5500/client/view/Auth/Login.html';
+  window.location.href = "http://127.0.0.1:5500/client/view/Auth/Login.html";
 }
