@@ -9,6 +9,8 @@ let textareaInput = document.querySelector(".textarea__input");
 let userInfoText = document.querySelector(".user__info");
 let loadingContainer = document.querySelector(".loading__container");
 let logout__btn = document.querySelector(".logout__btn");
+let themeButton = document.querySelector("#switch");
+let container = document.querySelector(".container");
 
 const userId = JSON.parse(localStorage.getItem("userId"));
 const username = JSON.parse(localStorage.getItem("username"));
@@ -64,6 +66,7 @@ function eventListener() {
   document.addEventListener("DOMContentLoaded", checkLogin);
   formin.addEventListener("submit", formValidationController);
   logout__btn.addEventListener("click", logoutFunc);
+  themeButton.addEventListener("click", changeTheme);
 }
 eventListener();
 
@@ -212,4 +215,10 @@ function deleteTodo(paramsId) {
 function logoutFunc() {
   localStorage.clear();
   window.location.href = "http://127.0.0.1:5500/client/view/Auth/Login.html";
+}
+
+const body = document.body;
+
+function changeTheme() {
+  body.classList.toggle("dark-mode");
 }

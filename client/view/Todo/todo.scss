@@ -3,8 +3,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+// :root {
+//   --bg-color-dark: #112d4e;
+//   --bg-btn-dark: #3f72af;
+//   --color-border-dark: #dbe2ef;
+//   --color-font-dark: #f9f7f7;
+// }
+:root {
+  --bg-color: #fff;
+  --bg-btn: #94bae8;
+  --text-color: #333;
+}
+
+.dark-mode {
+  --bg-color: #112d4e;
+  --bg-btn: #3f72af;
+  --text-color: #f9f7f7;
+}
 
 .container {
+  background-color: var(--bg-color);
   width: 100%;
   min-height: 100vh;
   position: relative;
@@ -25,13 +43,62 @@
     justify-content: space-between;
     .logout__btn {
       padding: 8px 12px;
+      background-color: var(--bg-btn);
+      color: var(--text-color);
       border: none;
       margin: 10px 0;
       cursor: pointer;
-      &:hover{
+      &:hover {
         background-color: #aaa;
-        color: #fff;
+        color: var(--text-color);
       }
+    }
+    .theme__btn {
+      margin: 10px 0;
+      input[type="checkbox"] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 50px;
+        height: 30px;
+        background: grey;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+      }
+
+      label:after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 90px;
+        transition: 0.3s;
+      }
+
+      input:checked + label {
+        background: #bada55;
+      }
+
+      input:checked + label:after {
+        left: calc(100% - 5px);
+        transform: translateX(-100%);
+      }
+
+      label:active:after {
+        width: 50px;
+      }
+    }
+    .user__info {
+      color: var(--text-color);
     }
     .btn__create {
       width: 45px;
@@ -118,7 +185,8 @@
           padding: 8px 12px;
           font-size: 14px;
           border: none;
-          background-color: aqua;
+          background-color: var(--bg-btn);
+          color: var(--text-color);
           margin-right: 10px;
           border-radius: 5px;
           -webkit-border-radius: 5px;
@@ -142,6 +210,7 @@
         justify-content: space-between;
         padding: 10px;
         border: 1px solid rgb(63, 123, 183);
+        color: var(--text-color);
         p {
           font-size: 25px;
           padding: 10px 0;
