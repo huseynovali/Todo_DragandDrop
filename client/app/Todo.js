@@ -220,5 +220,15 @@ function logoutFunc() {
 const body = document.body;
 
 function changeTheme() {
+  const body = document.body;
   body.classList.toggle("dark-mode");
+  const isDarkModeEnabled = body.classList.contains("dark-mode");
+  localStorage.setItem("darkModeEnabled", isDarkModeEnabled);
 }
+window.addEventListener("DOMContentLoaded", function () {
+  const isDarkModeEnabled = JSON.parse(localStorage.getItem("darkModeEnabled"));
+  if (isDarkModeEnabled) {
+    document.body.classList.add("dark-mode");
+    themeButton.checked = isDarkModeEnabled;
+  }
+});

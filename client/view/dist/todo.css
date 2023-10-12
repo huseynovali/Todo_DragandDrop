@@ -18,10 +18,12 @@
 
 .container {
   background-color: var(--bg-color);
+  color: var(--text-color);
   width: 100%;
   min-height: 100vh;
   position: relative;
 }
+
 .container .loading__container {
   position: absolute;
   width: 100%;
@@ -32,6 +34,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .container .create__button {
   width: 98%;
   padding: 12px 10px;
@@ -48,7 +51,6 @@
 }
 .container .create__button .logout__btn:hover {
   background-color: #aaa;
-  color: var(--text-color);
 }
 .container .create__button .theme__btn {
   margin: 10px 0;
@@ -89,9 +91,6 @@
 .container .create__button .theme__btn label:active:after {
   width: 50px;
 }
-.container .create__button .user__info {
-  color: var(--text-color);
-}
 .container .create__button .btn__create {
   width: 45px;
   height: 45px;
@@ -101,17 +100,10 @@
   font-weight: 700;
   position: relative;
   border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
   transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
 }
-.container .create__button .btn__create .right__stick {
+.container .create__button .btn__create .right__stick,
+.container .create__button .btn__create .left__stick {
   height: 80%;
   width: 2px;
   top: 10%;
@@ -120,18 +112,9 @@
   position: absolute;
 }
 .container .create__button .btn__create .left__stick {
-  height: 80%;
-  width: 2px;
-  top: 10%;
-  left: 45%;
-  background: #000;
-  position: absolute;
   transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
 }
+
 .container .create__form {
   position: absolute;
   background-color: #fff;
@@ -143,10 +126,6 @@
   overflow: hidden;
   border: 1px solid #aaa;
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
 }
 .container .create__form form .title__input {
   padding: 10px;
@@ -164,10 +143,6 @@
   border: none;
   border-bottom: 1px dashed #aaa;
   border-radius: 10px 10px 0px 0px;
-  -webkit-border-radius: 10px 10px 0px 0px;
-  -moz-border-radius: 10px 10px 0px 0px;
-  -ms-border-radius: 10px 10px 0px 0px;
-  -o-border-radius: 10px 10px 0px 0px;
 }
 .container .create__form form .save__button__container {
   display: flex;
@@ -181,11 +156,8 @@
   color: var(--text-color);
   margin-right: 10px;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
 }
+
 .container .todo__list__container {
   padding: 20px;
 }
@@ -201,7 +173,6 @@
   justify-content: space-between;
   padding: 10px;
   border: 1px solid rgb(63, 123, 183);
-  color: var(--text-color);
 }
 .container .todo__list__container .todo__list .list__item p {
   font-size: 25px;
@@ -233,7 +204,7 @@
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .d-flex {
@@ -242,10 +213,6 @@
 
 .rotate-45 {
   transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
 }
 
 /*# sourceMappingURL=todo.css.map */
